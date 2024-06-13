@@ -106,5 +106,5 @@ INSERT INTO Project_detail (id_proj, nik) VALUES
 ('PJ03', 'N08');
 ```
 
-### *Output Project Detail : *
+### *Output Project Detail :*
 ![](Foto/projectdetail.png)
