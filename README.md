@@ -19,7 +19,7 @@ INSERT INTO Perusahaan (id_p, nama, alamat) VALUES
 ('P02', 'Cabang Bekasi', NULL);
 ```
 
-### *Output Tabel Perusahaan : *
+### *Output Tabel Perusahaan :*
 ![](Foto/perusahaan.png)
 
 ### *Tabel Departemen*
@@ -38,7 +38,7 @@ INSERT INTO Departemen (id_dept, nama, id_p, manajer_nik) VALUES
 ('D03', 'RnD', 'P02', NULL),
 ('D04', 'Logistik', 'P02', NULL);
 ```
-### *Output Tabel Departemen : *
+### *Output Tabel Departemen :*
 ![](Foto/departemen.png)
 
 ### *Tabel Karyawan*
@@ -61,7 +61,7 @@ INSERT INTO Karyawan (nik, nama, id_dept, sup_nik) VALUES
 ('N07', 'Anis', 'D02', 'N06'),
 ('N08', 'Dika', 'D02', 'N06');
 ```
-### *Output Tabel Karyawan : *
+### *Output Tabel Karyawan :*
 ![](Foto/karyawan.png)
 
 ### *Tabel Project*
@@ -80,7 +80,7 @@ INSERT INTO Project (id_proj, nama, tgl_mulai, tgl_selesai, status) VALUES
 ('PJ03', 'C', '2019-03-21', '2019-05-10', '1');
 ```
 
-### *Output Tabel Project : *
+### *Output Tabel Project :*
 ![](Foto/project.png)
 
 ### *Tabel Project Detail*
