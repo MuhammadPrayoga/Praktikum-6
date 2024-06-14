@@ -108,3 +108,82 @@ INSERT INTO Project_detail (id_proj, nik) VALUES
 
 ### *Output Project Detail :*
 ![](Foto/projectdetail.png)
+
+## Latihan Praktikum 6
+
+### 1. Departemen apa saja yang terlibat dalam tiap-tiap Project
+**Script :**
+
+```sql
+SELECT Project.nama AS Project, GROUP_CONCAT(Departemen.nama) AS Departemen
+FROM Project
+INNER JOIN Project_detail ON Project.id_proj = Project_detail.id_proj
+INNER JOIN Karyawan ON Project_detail.nik = Karyawan.nik
+INNER JOIN Departemen ON Karyawan.id_dept = Departemen.id_dept
+GROUP BY Project.id_proj;
+```
+
+**Output :**
+
+![](Foto/1.png)
+
+### 2. Jumlah Karyawan tiap Departemen yang bekerja pada tiap-tiap project
+**Script :**
+
+```sql
+SELECT Project.nama AS Project, Departemen.nama AS Departemen, COUNT(*) AS 'Jumlah Karyawan'
+FROM Project
+INNER JOIN Project_detail ON Project.id_proj = Project_detail.id_proj
+INNER JOIN Karyawan ON Project_detail.nik = Karyawan.nik
+INNER JOIN Departemen ON Karyawan.id_dept = Departemen.id_dept
+GROUP BY Project.id_proj, Departemen.id_dept;
+```
+
+**Output :**
+
+![](Foto/2.png)
+
+### 3. Ada berapa Project yang sedang dikerjakan oleh Departemen *RnD*? *(ket: project berjalan adalah yang statusnya 1)*
+**Script :**
+
+```sql
+SELECT COUNT(*) AS 'Jumlah Project'
+FROM Project
+INNER JOIN Project_detail ON Project.id_proj = Project_detail.id_proj
+INNER JOIN Karyawan ON Project_detail.nik = Karyawan.nik
+INNER JOIN Departemen ON Karyawan.id_dept = Departemen.id_dept
+WHERE Departemen.nama = 'RnD' AND Project.status = 1;
+```
+
+**Output :**
+
+![](Foto/3.png)
+
+### 4. Berapa banyak Project yang sedang dikerjakan oleh Ari?
+**Script :**
+
+```sql
+SELECT COUNT(*) AS 'Jumlah Project'
+FROM Project_detail
+INNER JOIN Karyawan ON Project_detail.nik = Karyawan.nik
+WHERE Karyawan.nama = 'Ari' AND Project_detail.id_proj IN (SELECT id_proj FROM Project WHERE status = 1);
+```
+
+**Output :**
+
+![](Foto/4.png)
+
+### 5. Siapa saja yang mengerjakan Project B?
+**Script :**
+
+```sql
+SELECT Karyawan.nama
+FROM Project_detail
+INNER JOIN Karyawan ON Project_detail.nik = Karyawan.nik
+WHERE Project_detail.id_proj IN (SELECT id_proj FROM Project WHERE nama = 'B');
+```
+
+**Output :**
+
+![](Foto/5.png)
+
